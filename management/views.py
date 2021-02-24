@@ -1,6 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import MstCompanys, MstUsers
 
-# 後から変更
+
+# 新規登録 後から削除
+def sign_up(request):
+
+    if request.method == 'POST':
+        sign_up = MstUsers(UserName=request.POST['UserName'], Pass=request.POST['Pass'])
+        sign_up.save()
+        return redirect('management/Login.html')
+    else:
+        return render(request, 'management/Sign_up.html')
 
 
 def login(request):
@@ -11,8 +21,15 @@ def user(request):
     return render(request, 'management/User.html')
 
 
+# Login機能
 def users(request):
-    return render(request, 'management/Users.html')
+    if request.method == 'POST':
+        if MstUsers.objects.filter(UserName=request.POST['UserName'], Pass=request.POST['Pass']).exists():
+            login = MstUsers.objects.get(UserName=request.POST['UserName'], Pass=request.POST['Pass'])
+            return render(request, 'management/Users.html', {'login': login})
+    else:
+        context = {'msg': 'Invalid UserName or Pass'}
+        return render(request, 'management/Login.html', context)
 
 
 def companys(request):
@@ -61,4 +78,3 @@ def application(request):
 
 def roster(request):
     return render(request, 'management/Roster.html')
-

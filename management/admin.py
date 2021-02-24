@@ -1,3 +1,3 @@
 from django.contrib import admin
+from .models import MstUsers, MstCompanys
 
-# Register your models here.

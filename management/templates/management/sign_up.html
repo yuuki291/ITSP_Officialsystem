@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8">
+    <title>sign_up</title>
 </head>
 <body>
- <form method="POST" action="management/Users">
-    {% csrf_token %}
-   <div class="title">
-    <a href="management/Sign_up">Sign_up</a>
-   </div>
-     <div class="textviews">
+ <!-- 後から消す画面 -->
+   <form method="POST">
+   {% csrf_token %}
+    <div class="title">
+       <a href="management/Login">Login</a>
+        <div class="rogo">
+            <img src="#" alt="ロゴ">
+            <h2 class="rogo_text">勤怠管理システム</h2>
+        </div>
+    </div>
+       <div class="textviews">
            <div class="username_text">
                <label for="UserName">ユーザ</label>
                <input type="text" name="UserName" class="User" required="required" />
@@ -20,13 +25,11 @@
                <label for="Pass">パスワード</label>
                <input type="text" name="Pass" class="Pass" required="required" />
            </div>
-           <label class="error">{{ msg }}</label>
-
                <div class="button_submit">
-                   <button class="login">ログイン</button>
+                   <button type="submit" class="save">登録</button>
                </div>
        </div>
- </form>
+   </form>
 
 </body>
 </html>
