@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('CompanyName', models.CharField(blank=True, db_index=True, max_length=25, null=True, unique=True)),
                 ('CompanyId', models.CharField(max_length=100, primary_key=True, serialize=False)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
             ],
         ),
         migrations.CreateModel(
