@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import MstCompanys, MstUsers
+from .models import MstCompanys, MstUsers, UserDetails
 
 
 # 新規登録 後から削除
 def sign_up(request):
-
     if request.method == 'POST':
         sign_up = MstUsers(UserName=request.POST['UserName'], Pass=request.POST['Pass'])
         sign_up.save()
@@ -13,6 +12,7 @@ def sign_up(request):
         return render(request, 'management/Sign_up.html')
 
 
+# ログイン
 def login(request):
     if request.method == 'POST':
         if MstUsers.objects.filter(UserName=request.POST['UserName'], Pass=request.POST['Pass']).exists():
@@ -23,15 +23,29 @@ def login(request):
         return render(request, 'management/Login.html', context)
 
 
+# ユーザ詳細の登録
 def user(request):
+    if request.method == 'POST':
+        users = UserDetails(User_Name=request.POST['User_Name'],
+                            User_Name_Kana=request.POST['User_Name_Kana'],
+                            Gender=request.POST['Gender'],
+                            Birthday=request.POST['Birthday'],
+                            Type_Of_Contract=request.POST['Type_Of_Contract'],
+                            Affiliation_Department=request.POST['Affiliation_Department'],
+                            Affiliation_Section=request.POST['Affiliation_Section'],
+                            Position=request.POST['Position'],
+                            Notices=request.POST['Notices'],
+                            )
+        users.save()
+        return render(request, 'management/Users.html')
+    else:
+        return render(request, 'management/User.html')
 
-    return render(request, 'management/User.html')
 
-
-# Login機能
+# ユーザ一覧
 def users(request):
     # 一覧表示するデータベースを後から変更
-    user_list = MstUsers.objects.all()
+    user_list = UserDetails.objects.all()
     # 値一覧を取得
     user_dict = {'users': user_list}
     # ディクショナリーの形で設定

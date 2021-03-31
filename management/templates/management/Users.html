@@ -9,18 +9,19 @@
         <!-- if文 usersが指定されている場合には、endifまでの文が表示されます  -->
 
 
-        <ol>
+
             {% for list in users %}
             <!-- for文 personという変数名でusersリストをループします  -->
 
-
-            <li>User Info</li>
             <ul>
-                <li>First Name: {{ list.UserName }}</li>
-                <li>Last Name: {{ list.Pass }}</li>
-                <!-- personのfirst_name,last_nameをそれぞれ表示  -->
-
-
+                <li>No {{ list.User_No }}</li></br>
+                <li>社員名 {{ list.User_Name }}</li></br>
+                <li>所属部署 {{ list.Affiliation_Department }}</li></br>
+                <li>所属課 {{ list.Affiliation_Section }}</li></br>
+                <li>役職 {{ list.Position }}</li></br>
+                <li>特紀事項 {{ list.Notices }}</li>
+                <button name="update">更新</button>
+  　　　         <button name="delete">削除</button>
             </ul>
             {% endfor %}
         </ol>

@@ -2,9 +2,59 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>ユーザ詳細</title>
 </head>
 <body>
+
+    <form method="POST" action="Users">
+    {% csrf_token %}
+     <div class="text_views">
+           <div class="username_text">
+               <label for="User_Name">ユーザ名:</label>
+               <input type="text" name="User_Name" class="user" required="required" />
+           </div></br>
+
+           <div class="User_Name_Kana_text">
+               <label for="User_Name_Kana">ユーザ名カナ:</label>
+               <input type="text" name="User_Name_Kana" class="user" required="required" />
+           </div></br>
+
+           <div class="Gender_text">
+               <label for="Gender">性別:</label>
+               <input type="text" name="Gender" class="user" required="required" />
+           </div></br>
+
+           <div class="Type_Of_Contract_text">
+               <label for="Type_Of_Contract">契約形態:</label>
+               <input type="text" name="Type_Of_Contract" class="user" required="required" />
+           </div></br>
+
+           <div class="Affiliation_Department_text">
+               <label for="Affiliation_Department ">所属部署:</label>
+               <input type="text" name="Affiliation_Department" class="user" required="required" />
+           </div></br>
+
+           <div class="Affiliation_Section_text">
+               <label for="Affiliation_Section">所属課:</label>
+               <input type="text" name="Affiliation_Section" class="user" required="required" />
+           </div></br>
+
+           <div class="Position_text">
+               <label for="Position">役職:</label>
+               <input type="text" name="Position" class="user" required="required" />
+           </div></br>
+
+           <div class="Notices_text">
+               <label for="Notices">特紀事項:</label>
+               <input type="text" name="Notices" class="user" required="required" />
+           </div>
+
+         <!--ユーザNo/生年月日/入社日はあとで作成-->
+               <div class="button_submit">
+                   <button class="update">更新</button>
+               </div>
+       </div>
+ </form>
 
 </body>
 </html>
