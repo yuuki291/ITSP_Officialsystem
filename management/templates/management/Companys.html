@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>会社一覧</title>
 </head>
 <body>
+{% if users %}
+        <!-- if文 usersが指定されている場合には、endifまでの文が表示されます  -->
+
+
+        <ol>
+            {% for list in users %}
+            <!-- for文 personという変数名でusersリストをループします  -->
+
+
+            <li>User Info</li>
+            <ul>
+                <li>First Name: {{ list.UserName }}</li>
+                <li>Last Name: {{ list.Pass }}</li>
+                <!-- personのfirst_name,last_nameをそれぞれ表示  -->
+
+
+            </ul>
+            {% endfor %}
+        </ol>
+        {% endif %}
+
 
 </body>
 </html>

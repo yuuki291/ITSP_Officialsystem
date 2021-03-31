@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 
+from management import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('management/', include('management.urls')),
+    path('', views.login, name='login'),
+    path('', include('management.urls')),
 ]

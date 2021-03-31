@@ -1,7 +1,6 @@
 from django.conf.urls import url
 from . import views
 
-
 # 後から変更
 urlpatterns = [
     url("Sign_up", views.sign_up, name='sign_up'),

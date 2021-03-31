@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>ログイン</title>
 </head>
 <body>
- <form method="POST" action="management/Users">
+ <form method="POST" action="User">
     {% csrf_token %}
    <div class="title">
-    <a href="management/Sign_up">Sign_up</a>
+    <a href="Sign_up">Sign_up</a>
    </div>
      <div class="rogo">
             <img src="#" alt="ロゴ">
@@ -24,7 +24,6 @@
                <label for="Pass">パスワード</label>
                <input type="text" name="Pass" class="Pass" required="required" />
            </div>
-           <label class="error">{{ msg }}</label>
 
                <div class="button_submit">
                    <button class="login">ログイン</button>

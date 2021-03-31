@@ -14,22 +14,28 @@ def sign_up(request):
 
 
 def login(request):
-    return render(request, 'management/Login.html')
+    if request.method == 'POST':
+        if MstUsers.objects.filter(UserName=request.POST['UserName'], Pass=request.POST['Pass']).exists():
+            login = MstUsers.objects.get(UserName=request.POST['UserName'], Pass=request.POST['Pass'])
+            return render(request, 'management/User.html', {'login': login})
+    else:
+        context = {'msg': 'Invalid UserName or Pass'}
+        return render(request, 'management/Login.html', context)
 
 
 def user(request):
+
     return render(request, 'management/User.html')
 
 
 # Login機能
 def users(request):
-    if request.method == 'POST':
-        if MstUsers.objects.filter(UserName=request.POST['UserName'], Pass=request.POST['Pass']).exists():
-            login = MstUsers.objects.get(UserName=request.POST['UserName'], Pass=request.POST['Pass'])
-            return render(request, 'management/Users.html', {'login': login})
-    else:
-        context = {'msg': 'Invalid UserName or Pass'}
-        return render(request, 'management/Login.html', context)
+    # 一覧表示するデータベースを後から変更
+    user_list = MstUsers.objects.all()
+    # 値一覧を取得
+    user_dict = {'users': user_list}
+    # ディクショナリーの形で設定
+    return render(request, 'management/Users.html', context=user_dict)
 
 
 def companys(request):
